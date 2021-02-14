@@ -11,7 +11,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>br.com.roberto.backend-sistema-contatos-api</module>
+        <module>backend-sistema-contatos-api</module>
+        <module>backend-sistema-contatos-ejb</module>
+        <module>backend-sistema-contatos-ear</module>
     </modules>
 
     <properties>

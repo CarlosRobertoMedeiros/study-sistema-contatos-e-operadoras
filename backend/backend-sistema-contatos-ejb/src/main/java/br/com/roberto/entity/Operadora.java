@@ -6,15 +6,24 @@ import java.util.Objects;
 public class Operadora {
     private Integer codigo;
     private String nome;
-    //private Categoria categoria;
+    private Categoria categoria;
     private BigDecimal preco;
 
     public Operadora(){}
 
-    public Operadora(Integer codigo, String nome, BigDecimal preco) {
+    public Operadora(Integer codigo, String nome, Categoria categoria, BigDecimal preco) {
         this.codigo = codigo;
         this.nome = nome;
+        this.categoria = categoria;
         this.preco = preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public BigDecimal getPreco() {

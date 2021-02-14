@@ -1,22 +1,23 @@
-package br.com.roberto.entity;
+package br.com.roberto.dto;
+
+import br.com.roberto.entity.Operadora;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Contato {
+public class ContatoDto {
 
-    private Integer id;
+    private Long id;
     private String serial;
     private String nome;
     private String telefone;
-    //private LocalDateTime data = LocalDateTime.now();
+    private LocalDateTime data = LocalDateTime.now();
     private Operadora operadora;
 
-    public Contato() {
-
+    public ContatoDto() {
     }
 
-    public Contato(Integer id, String serial, String nome, String telefone, Operadora operadora) {
+    public ContatoDto(Long id, String serial, String nome, String telefone, Operadora operadora) {
         this.id = id;
         this.serial = serial;
         this.nome = nome;
@@ -24,11 +25,11 @@ public class Contato {
         this.operadora = operadora;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,13 +57,13 @@ public class Contato {
         this.telefone = telefone;
     }
 
-//    public LocalDateTime getData() {
-//        return data;
-//    }
-//
-//    public void setData(LocalDateTime data) {
-//        this.data = data;
-//    }
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
+    }
 
     public Operadora getOperadora() {
         return operadora;
@@ -76,8 +77,8 @@ public class Contato {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Contato contatos = (Contato) o;
-        return Objects.equals(id, contatos.id);
+        ContatoDto that = (ContatoDto) o;
+        return id.equals(that.id);
     }
 
     @Override

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>backend-sistema-contatos-parent</artifactId>
+        <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>backend-sistema-contatos-ear</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>ear</packaging>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+            <artifactId>backend-sistema-contatos-ejb</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+
+        <dependency>
+            <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+            <artifactId>backend-sistema-contatos-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>build</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <version>3.0.2</version>
+
+                        <configuration>
+                            <modules>
+                                <webModule>
+                                    <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+                                    <artifactId>backend-sistema-contatos-api</artifactId>
+                                    <contextRoot>/backend-sistema-contatos-api</contextRoot>
+                                </webModule>
+                                <ejbModule>
+                                    <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+                                    <artifactId>backend-sistema-contatos-ejb</artifactId>
+                                </ejbModule>
+                            </modules>
+                        </configuration>
+
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>wildfly-dev</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>2.1.0.Beta1</version>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                    <goal>deploy</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+
+</project>
