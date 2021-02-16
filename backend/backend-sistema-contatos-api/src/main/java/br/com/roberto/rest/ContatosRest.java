@@ -62,16 +62,10 @@ public class ContatosRest {
     public Response excluiContato(@PathParam("id") Long id) {
 
         boolean removeuContato = contatoService.removeContato(id);
-
         if (removeuContato){
             return Response.status(202).entity("Usuário Excluido com Sucesso !!").build();
         }else{
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-
     }
-
-
-
-
 }
