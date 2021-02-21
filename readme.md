@@ -1,7 +1,14 @@
 Crud Utilizando as Tecnologias
 
+	
+	- Configuração do KeyCloak
+		Configuração via Container Docker
+		
+		
+	
 	- Banco de Dados
 		- Oracle 11g apontado em container docker
+	
 	
 	- BackEnd(JavaEE - 7)
 		- JAX-RS 2
@@ -20,6 +27,12 @@ Crud Utilizando as Tecnologias
 		
 		
 
+	--Para rodar o KeyCloak execute o seguinte comando 
+	docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin  -e KEYCLOAK_IMPORT=${PWD}//keycloack//imports//realm-export.json jboss/keycloak
+
+	--Depois vai ser necessário importar o arquivo de configuração
+	-- Ainda não fiz o compose
+	
 			
 		
 

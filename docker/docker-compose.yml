@@ -1,0 +1,29 @@
+version: '3.5'
+
+networks: 
+  net-backend:
+    driver: bridge
+
+
+services:
+  
+  keycloak:
+    
+    image: jboss/keycloak:latest
+    container_name: keycloack
+    restart: always
+    volumes:
+      - ${PWD}/keycloack/imports:/opt/jboss/keycloak/imports
+    command:
+      - "-b 0.0.0.0 -Dkeycloak.import=/opt/jboss/keycloak/imports/realm-export.json"
+    
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: ${PWD}/keycloack/imports:/opt/jboss/keycloak/imports
+
+    ports:
+      - 8080:8080
+    
+    networks:
+      - net-backend   
