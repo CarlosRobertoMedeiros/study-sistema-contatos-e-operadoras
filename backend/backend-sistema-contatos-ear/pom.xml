@@ -48,15 +48,15 @@
 
                         <configuration>
                             <modules>
+                                <ejbModule>
+                                    <groupId>br.com.roberto.backend-sistema-contatos</groupId>
+                                    <artifactId>backend-sistema-contatos-ejb</artifactId>
+                                </ejbModule>
                                 <webModule>
                                     <groupId>br.com.roberto.backend-sistema-contatos</groupId>
                                     <artifactId>backend-sistema-contatos-api</artifactId>
                                     <contextRoot>/backend-sistema-contatos-api</contextRoot>
                                 </webModule>
-                                <ejbModule>
-                                    <groupId>br.com.roberto.backend-sistema-contatos</groupId>
-                                    <artifactId>backend-sistema-contatos-ejb</artifactId>
-                                </ejbModule>
                             </modules>
                         </configuration>
 

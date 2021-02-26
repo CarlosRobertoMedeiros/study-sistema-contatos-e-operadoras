@@ -3,6 +3,7 @@ package br.com.roberto.rest;
 
 import br.com.roberto.dto.ContatoDto;
 import br.com.roberto.exceptions.ContatoNaoEncontradoException;
+import br.com.roberto.rest.sso.service.ApiClientService;
 import br.com.roberto.service.ContatoService;
 
 import javax.inject.Inject;
@@ -15,12 +16,17 @@ import java.util.List;
 public class ContatosRest {
 
     @Inject
+    private ApiClientService apiClientService;
+
+    @Inject
     private ContatoService contatoService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getContatos(){
         try {
+            String access_token = apiClientService.getTokenSSO().getAccess_token();
+            System.out.println(access_token);
             List<ContatoDto> contatos = contatoService.recuperaContatos();
             return Response.ok(contatos).build();
         }catch (ContatoNaoEncontradoException e){
